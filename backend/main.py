@@ -6,8 +6,9 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from database import engine, Base
-from models import User, QuizHistory  # важно импортировать обе модели
+from models import User, QuizHistory  
 from routers import auth, chat, quizzes, history
+from routers import recommendations
 
 load_dotenv()
 
@@ -41,3 +42,4 @@ app.include_router(auth.router, prefix="/api/auth", tags=["auth"])
 app.include_router(chat.router, prefix="/api/ai", tags=["ai"])
 app.include_router(quizzes.router, prefix="/api/quizzes", tags=["quizzes"])
 app.include_router(history.router, prefix="/api/history", tags=["history"])
+app.include_router(recommendations.router, prefix="/api/recommendations", tags=["recommendations"])
