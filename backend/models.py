@@ -1,7 +1,7 @@
 import uuid
 from datetime import datetime
 
-from sqlalchemy import DateTime, Float, String, func, Integer, JSON
+from sqlalchemy import DateTime, Float, ForeignKey, String, func, Integer, JSON
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import Mapped, mapped_column
 
@@ -18,7 +18,6 @@ class User(Base):
     email: Mapped[str] = mapped_column(String, nullable=False, unique=True, index=True)
     password_hash: Mapped[str] = mapped_column(String, nullable=False)
 
-   
     major: Mapped[str] = mapped_column(
         String, nullable=False, server_default="Computer Science"
     )
@@ -29,19 +28,41 @@ class User(Base):
         Float, nullable=False, server_default="3.5"
     )
 
-    
     study_goal: Mapped[str] = mapped_column(
         String, nullable=False, server_default="exam"
-    ) 
-
+    )
     weak_subjects: Mapped[list] = mapped_column(
         JSON, nullable=False, server_default="[]"
-    )  
-
+    )
     study_hours_per_week: Mapped[int] = mapped_column(
         Integer, nullable=False, server_default="5"
     )
 
+    created_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), server_default=func.now(), nullable=False
+    )
+
+
+class Assignment(Base):
+    __tablename__ = "assignments"
+
+    id: Mapped[uuid.UUID] = mapped_column(
+        UUID(as_uuid=True), primary_key=True, default=uuid.uuid4
+    )
+    user_id: Mapped[uuid.UUID] = mapped_column(
+        UUID(as_uuid=True),
+        ForeignKey("users.id", ondelete="CASCADE"),
+        nullable=False,
+        index=True,
+    )
+    title: Mapped[str] = mapped_column(String, nullable=False)
+    course: Mapped[str] = mapped_column(String, nullable=False)
+    status: Mapped[str] = mapped_column(
+        String, nullable=False, server_default="Pending"
+    )
+    score: Mapped[str] = mapped_column(
+        String, nullable=True, server_default="-"
+    )
     created_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True), server_default=func.now(), nullable=False
     )

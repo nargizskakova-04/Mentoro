@@ -9,7 +9,7 @@ from database import engine, Base
 from models import Assignment, User  # noqa: F401 — needed for Base.metadata
 from routers import assignments, auth, chat, quizzes
 
-load_dotenv(dotenv_path="../.env")
+load_dotenv()
 
 
 @asynccontextmanager

@@ -11,6 +11,8 @@ JWT_ALGORITHM = "HS256"
 JWT_EXPIRE_MINUTES = 60 * 24
 
 
+# ─── Auth ────────────────────────────────────────────────────────────────────
+
 class UserCreate(BaseModel):
     name: str
     email: EmailStr
@@ -29,12 +31,23 @@ class UserRead(BaseModel):
     major: str
     group: str
     gpa: float
-    # для персонализации 
     study_goal: str
     weak_subjects: List[str]
     study_hours_per_week: int
     createdAt: datetime
-    
+
+
+class UserUpdate(BaseModel):
+    name: Optional[str] = None
+    major: Optional[str] = None
+    group: Optional[str] = None
+    gpa: Optional[float] = None
+    study_goal: Optional[str] = None
+    weak_subjects: Optional[List[str]] = None
+    study_hours_per_week: Optional[int] = None
+
+
+# ─── JWT ─────────────────────────────────────────────────────────────────────
 
 def create_access_token(data: Dict[str, Any], expires_delta: Optional[timedelta] = None) -> str:
     to_encode = data.copy()
@@ -52,6 +65,8 @@ def verify_access_token(token: str) -> Optional[Dict[str, Any]]:
         return None
 
 
+# ─── AI Chat ─────────────────────────────────────────────────────────────────
+
 class ChatMessage(BaseModel):
     role: str
     content: str
@@ -61,6 +76,8 @@ class ChatRequest(BaseModel):
     messages: List[ChatMessage]
 
 
+# ─── Quizzes ─────────────────────────────────────────────────────────────────
+
 class QuizGenerateRequest(BaseModel):
     type: str
     documentText: Optional[str] = None
@@ -69,3 +86,29 @@ class QuizGenerateRequest(BaseModel):
 class QuizChatRequest(BaseModel):
     messages: List[ChatMessage]
     documentText: Optional[str] = None
+
+
+# ─── Assignments ─────────────────────────────────────────────────────────────
+
+class AssignmentCreate(BaseModel):
+    title: str
+    course: str
+    status: Optional[str] = "Pending"
+    score: Optional[str] = "-"
+
+
+class AssignmentUpdate(BaseModel):
+    title: Optional[str] = None
+    course: Optional[str] = None
+    status: Optional[str] = None
+    score: Optional[str] = None
+
+
+class AssignmentRead(BaseModel):
+    id: UUID
+    user_id: UUID
+    title: str
+    course: str
+    status: str
+    score: Optional[str] = "-"
+    createdAt: datetime
