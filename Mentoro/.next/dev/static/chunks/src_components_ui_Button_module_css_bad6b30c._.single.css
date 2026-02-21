@@ -1,0 +1,45 @@
+/* [project]/src/components/ui/Button.module.css [app-client] (css) */
+.Button-module__8RiFmG__button {
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  border: none;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.5;
+  transition: all .2s;
+  display: inline-flex;
+}
+
+.Button-module__8RiFmG__primary {
+  background-color: var(--primary);
+  color: #fff;
+}
+
+.Button-module__8RiFmG__primary:hover {
+  background-color: var(--primary-hover);
+}
+
+.Button-module__8RiFmG__secondary {
+  color: var(--text-main);
+  border: 1px solid var(--border);
+  background-color: #fff;
+}
+
+.Button-module__8RiFmG__secondary:hover {
+  background-color: var(--background);
+}
+
+.Button-module__8RiFmG__ghost {
+  color: var(--primary);
+  background-color: #0000;
+}
+
+.Button-module__8RiFmG__ghost:hover {
+  background-color: #4318ff0d;
+}
+
+/*# sourceMappingURL=src_components_ui_Button_module_css_bad6b30c._.single.css.map*/

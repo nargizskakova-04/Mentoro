@@ -1,0 +1,78 @@
+/* [project]/src/components/Header.module.css [app-client] (css) */
+.Header-module__hBw1pG__header {
+  z-index: 40;
+  background: none;
+  justify-content: space-between;
+  align-items: center;
+  height: 80px;
+  padding: 0 40px;
+  display: flex;
+  position: sticky;
+  top: 0;
+}
+
+.Header-module__hBw1pG__titleContainer {
+  align-items: center;
+  gap: 12px;
+  display: flex;
+}
+
+.Header-module__hBw1pG__title {
+  color: var(--text-main);
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.Header-module__hBw1pG__brandLogo {
+  background: var(--secondary);
+  color: #fff;
+  border-radius: 12px;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  display: flex;
+}
+
+.Header-module__hBw1pG__actions {
+  align-items: center;
+  gap: 24px;
+  display: flex;
+}
+
+.Header-module__hBw1pG__iconButton {
+  width: 40px;
+  height: 40px;
+  color: var(--text-secondary);
+  cursor: pointer;
+  background: none;
+  border: none;
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+  transition: all .2s;
+  display: flex;
+}
+
+.Header-module__hBw1pG__iconButton:hover {
+  background: var(--card-bg);
+  color: var(--primary);
+  box-shadow: 0 4px 12px #0000000d;
+}
+
+.Header-module__hBw1pG__profile {
+  cursor: pointer;
+  background: #ccc;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  overflow: hidden;
+}
+
+.Header-module__hBw1pG__profileImage {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+/*# sourceMappingURL=src_components_Header_module_css_bad6b30c._.single.css.map*/

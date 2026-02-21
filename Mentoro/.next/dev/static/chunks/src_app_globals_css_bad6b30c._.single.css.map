@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 1, "column": 0}, "map": {"version":3,"sources":["turbopack:///[project]/src/app/globals.css"],"sourcesContent":["@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');\n\n:root {\n  /* Colors - Mentoro Brand */\n  --background: #F8F6FC;\n  --card-bg: #FFFFFF;\n\n  --primary: #6B4BA1;\n  --primary-hover: #563A82;\n  --secondary: #9B7DC1;\n\n  --text-main: #2D1B4E;\n  --text-secondary: #8B7BA8;\n  --text-light: #E8E3F0;\n\n  --border: #E8E3F0;\n  --input-bg: #F8F6FC;\n\n  --success: #05CD99;\n  --warning: #FFB547;\n  --error: #EE5D50;\n\n  /* Spacing & Radius */\n  --radius: 20px;\n  --radius-sm: 10px;\n}\n\n* {\n  box-sizing: border-box;\n  padding: 0;\n  margin: 0;\n}\n\nbody {\n  color: var(--text-main);\n  background: var(--background);\n  font-family: 'Inter', sans-serif;\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n}\n\na {\n  color: inherit;\n  text-decoration: none;\n}\n\n/* Utilities */\n.card {\n  background: var(--card-bg);\n  border-radius: var(--radius);\n  box-shadow: 0px 18px 40px rgba(112, 144, 176, 0.12);\n}"],"names":[],"mappings":"AAEA;;;;;;;;;;;;;;;;;;AAyBA;;;;;;AAMA;;;;;;;;AAQA;;;;;AAMA"}}]
+}

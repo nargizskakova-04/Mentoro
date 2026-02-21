@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { retrieveRelevantChunks } from '@/lib/rag';
-import OpenAI from 'openai';
+import { GoogleGenerativeAI } from "@google/generative-ai";
+
 
 const MAX_CONTEXT_CHARS = 6000;
 
@@ -9,10 +9,7 @@ function truncateForContext(text: string): string {
     return text.slice(0, MAX_CONTEXT_CHARS) + '\n\n[... обрезано ...]';
 }
 
-const openai = new OpenAI({
-    apiKey: 'not-needed',
-    baseURL: 'http://localhost:1234/v1',
-});
+const genAI = new GoogleGenerativeAI("key");
 
 export async function POST(req: NextRequest) {
     try {
@@ -57,7 +54,7 @@ export async function POST(req: NextRequest) {
         };
 
         const completion = await openai.chat.completions.create({
-            model: 'local-model',
+            model: 'gemini-1.5-flash',
             messages: [systemPrompt, ...messages],
             stream: true,
         });

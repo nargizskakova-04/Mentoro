@@ -1,0 +1,78 @@
+/* [project]/src/app/dashboard/quizzes/result/page.module.css [app-client] (css) */
+.page-module__HZfEmG__container {
+  background: #f4f7fe;
+  height: 100%;
+  padding: 24px;
+  overflow-y: auto;
+}
+
+.page-module__HZfEmG__header {
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  display: flex;
+}
+
+.page-module__HZfEmG__title {
+  color: #1b2559;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.page-module__HZfEmG__backBtn {
+  color: #a3aed0;
+  gap: 8px;
+  display: flex;
+}
+
+.page-module__HZfEmG__contentArea {
+  background: #fff;
+  border-radius: 20px;
+  min-height: 60vh;
+  padding: 32px;
+  box-shadow: 0 4px 12px #0000000d;
+}
+
+.page-module__HZfEmG__loadingContainer {
+  color: #4318ff;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  height: 100%;
+  min-height: 400px;
+  display: flex;
+}
+
+.page-module__HZfEmG__errorContainer {
+  text-align: center;
+  color: #ee5d50;
+}
+
+.page-module__HZfEmG__prose h1, .page-module__HZfEmG__prose h2, .page-module__HZfEmG__prose h3 {
+  color: #1b2559;
+  margin-top: 24px;
+  margin-bottom: 16px;
+  font-weight: 700;
+}
+
+.page-module__HZfEmG__prose p {
+  color: #2b3674;
+  margin-bottom: 16px;
+  line-height: 1.6;
+}
+
+.page-module__HZfEmG__prose ul, .page-module__HZfEmG__prose ol {
+  margin-bottom: 16px;
+  margin-left: 20px;
+}
+
+.page-module__HZfEmG__prose li {
+  margin-bottom: 8px;
+}
+
+.page-module__HZfEmG__prose strong {
+  color: #4318ff;
+}
+
+/*# sourceMappingURL=src_app_dashboard_quizzes_result_page_module_css_bad6b30c._.single.css.map*/

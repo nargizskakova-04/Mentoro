@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 1, "column": 0}, "map": {"version":3,"sources":["turbopack:///[project]/src/components/ui/Input.module.css"],"sourcesContent":[".inputContainer {\n    display: flex;\n    align-items: center;\n    background-color: var(--card-bg);\n    /* Or input-bg depending on design context, login has white bg inputs usually */\n    border: 1px solid var(--border);\n    border-radius: var(--radius-sm);\n    padding: 0 16px;\n    height: 50px;\n    transition: border-color 0.2s;\n    width: 100%;\n}\n\n.inputContainer:focus-within {\n    border-color: var(--primary);\n}\n\n.icon {\n    color: var(--text-secondary);\n    margin-right: 12px;\n}\n\n.input {\n    border: none;\n    background: transparent;\n    width: 100%;\n    height: 100%;\n    font-size: 14px;\n    color: var(--text-main);\n    outline: none;\n}\n\n.input::placeholder {\n    color: var(--text-secondary);\n}"],"names":[],"mappings":"AAAA;;;;;;;;;;;;AAaA;;;;AAIA;;;;;AAKA;;;;;;;;;;AAUA"}}]
+}

@@ -1,0 +1,486 @@
+/* [project]/src/app/dashboard/quizzes/result/page.module.css [app-client] (css) */
+.page-module__HZfEmG__container {
+  background: #f4f7fe;
+  height: 100%;
+  padding: 24px;
+  overflow-y: auto;
+}
+
+.page-module__HZfEmG__header {
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  display: flex;
+}
+
+.page-module__HZfEmG__title {
+  color: #1b2559;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.page-module__HZfEmG__backBtn {
+  color: #a3aed0;
+  gap: 8px;
+  display: flex;
+}
+
+.page-module__HZfEmG__contentArea {
+  background: #fff;
+  border-radius: 20px;
+  min-height: 60vh;
+  padding: 32px;
+  box-shadow: 0 4px 12px #0000000d;
+}
+
+.page-module__HZfEmG__loadingContainer {
+  color: #4318ff;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  height: 100%;
+  min-height: 400px;
+  display: flex;
+}
+
+.page-module__HZfEmG__errorContainer {
+  text-align: center;
+  color: #ee5d50;
+}
+
+.page-module__HZfEmG__prose h1, .page-module__HZfEmG__prose h2, .page-module__HZfEmG__prose h3 {
+  color: #1b2559;
+  margin-top: 24px;
+  margin-bottom: 16px;
+  font-weight: 700;
+}
+
+.page-module__HZfEmG__prose p {
+  color: #2b3674;
+  margin-bottom: 16px;
+  line-height: 1.6;
+}
+
+.page-module__HZfEmG__prose ul, .page-module__HZfEmG__prose ol {
+  margin-bottom: 16px;
+  margin-left: 20px;
+}
+
+.page-module__HZfEmG__prose li {
+  margin-bottom: 8px;
+}
+
+.page-module__HZfEmG__prose strong {
+  color: #4318ff;
+}
+
+/* [project]/src/components/ui/Button.module.css [app-client] (css) */
+.Button-module__8RiFmG__button {
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  border: none;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.5;
+  transition: all .2s;
+  display: inline-flex;
+}
+
+.Button-module__8RiFmG__primary {
+  background-color: var(--primary);
+  color: #fff;
+}
+
+.Button-module__8RiFmG__primary:hover {
+  background-color: var(--primary-hover);
+}
+
+.Button-module__8RiFmG__secondary {
+  color: var(--text-main);
+  border: 1px solid var(--border);
+  background-color: #fff;
+}
+
+.Button-module__8RiFmG__secondary:hover {
+  background-color: var(--background);
+}
+
+.Button-module__8RiFmG__ghost {
+  color: var(--primary);
+  background-color: #0000;
+}
+
+.Button-module__8RiFmG__ghost:hover {
+  background-color: #4318ff0d;
+}
+
+/* [project]/src/components/DocumentChat.module.css [app-client] (css) */
+.DocumentChat-module__a7bhfG__container {
+  background: #fff;
+  border-radius: 20px;
+  flex-direction: column;
+  min-height: 450px;
+  display: flex;
+  overflow: hidden;
+  box-shadow: 0 20px 40px #7090b01f;
+}
+
+.DocumentChat-module__a7bhfG__header {
+  border-bottom: 1px solid #f4f7fe;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 24px;
+  display: flex;
+}
+
+.DocumentChat-module__a7bhfG__iconWrapper {
+  color: #4318ff;
+  background: #e9e3ff;
+  border-radius: 50%;
+  padding: 8px;
+}
+
+.DocumentChat-module__a7bhfG__title {
+  color: #1b2559;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.DocumentChat-module__a7bhfG__subtitle {
+  color: #a3aed0;
+  font-size: 12px;
+}
+
+.DocumentChat-module__a7bhfG__statusIndicator {
+  color: #05cd99;
+  background: #05cd991a;
+  border-radius: 4px;
+  margin-left: auto;
+  padding: 2px 8px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.DocumentChat-module__a7bhfG__messagesArea {
+  background: #fafcfe;
+  flex-direction: column;
+  flex: 1;
+  gap: 16px;
+  padding: 20px;
+  display: flex;
+  overflow-y: auto;
+}
+
+.DocumentChat-module__a7bhfG__message {
+  border-radius: 16px;
+  max-width: 80%;
+  padding: 12px 16px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.DocumentChat-module__a7bhfG__messageContent {
+  white-space: pre-wrap;
+}
+
+.DocumentChat-module__a7bhfG__markdown {
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.DocumentChat-module__a7bhfG__markdown p {
+  margin: 0 0 .5em;
+}
+
+.DocumentChat-module__a7bhfG__markdown p:last-child {
+  margin-bottom: 0;
+}
+
+.DocumentChat-module__a7bhfG__markdown strong {
+  color: #1b2559;
+  font-weight: 700;
+}
+
+.DocumentChat-module__a7bhfG__markdown em {
+  font-style: italic;
+}
+
+.DocumentChat-module__a7bhfG__markdown ul, .DocumentChat-module__a7bhfG__markdown ol {
+  margin: .5em 0;
+  padding-left: 1.25em;
+}
+
+.DocumentChat-module__a7bhfG__markdown li {
+  margin-bottom: .25em;
+}
+
+.DocumentChat-module__a7bhfG__markdown h1, .DocumentChat-module__a7bhfG__markdown h2, .DocumentChat-module__a7bhfG__markdown h3 {
+  color: #1b2559;
+  margin: 1em 0 .5em;
+  font-weight: 700;
+}
+
+.DocumentChat-module__a7bhfG__markdown h1:first-child, .DocumentChat-module__a7bhfG__markdown h2:first-child, .DocumentChat-module__a7bhfG__markdown h3:first-child {
+  margin-top: 0;
+}
+
+.DocumentChat-module__a7bhfG__userMessage {
+  color: #fff;
+  background: #4318ff;
+  border-bottom-right-radius: 4px;
+  align-self: flex-end;
+}
+
+.DocumentChat-module__a7bhfG__userMessage .DocumentChat-module__a7bhfG__messageContent {
+  color: #fff;
+}
+
+.DocumentChat-module__a7bhfG__aiMessage {
+  color: #1b2559;
+  background: #fff;
+  border: 1px solid #e9edf7;
+  border-bottom-left-radius: 4px;
+  align-self: flex-start;
+}
+
+.DocumentChat-module__a7bhfG__inputArea {
+  background: #fff;
+  border-top: 1px solid #f4f7fe;
+  gap: 12px;
+  padding: 16px;
+  display: flex;
+}
+
+.DocumentChat-module__a7bhfG__input {
+  color: #1b2559;
+  background: #f4f7fe;
+  border: 1px solid #e9edf7;
+  border-radius: 12px;
+  outline: none;
+  flex: 1;
+  padding: 12px 16px;
+  font-size: 14px;
+  transition: all .2s;
+}
+
+.DocumentChat-module__a7bhfG__input:focus {
+  background: #fff;
+  border-color: #4318ff;
+}
+
+.DocumentChat-module__a7bhfG__sendButton {
+  color: #fff;
+  cursor: pointer;
+  background: #4318ff;
+  border: none;
+  border-radius: 12px;
+  justify-content: center;
+  align-items: center;
+  width: 44px;
+  height: 44px;
+  transition: background .2s;
+  display: flex;
+}
+
+.DocumentChat-module__a7bhfG__sendButton:hover {
+  background: #31c;
+}
+
+.DocumentChat-module__a7bhfG__sendButton:disabled {
+  cursor: not-allowed;
+  background: #a3aed0;
+}
+
+.DocumentChat-module__a7bhfG__loadingDots {
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  padding: 8px;
+  display: flex;
+}
+
+.DocumentChat-module__a7bhfG__dot {
+  background: #a3aed0;
+  border-radius: 50%;
+  width: 6px;
+  height: 6px;
+  animation: 1.4s ease-in-out infinite both DocumentChat-module__a7bhfG__bounce;
+}
+
+.DocumentChat-module__a7bhfG__dot:first-child {
+  animation-delay: -.32s;
+}
+
+.DocumentChat-module__a7bhfG__dot:nth-child(2) {
+  animation-delay: -.16s;
+}
+
+@keyframes DocumentChat-module__a7bhfG__bounce {
+  0%, 80%, 100% {
+    transform: scale(0);
+  }
+
+  40% {
+    transform: scale(1);
+  }
+}
+
+/* [project]/src/components/QuizPlayer.module.css [app-client] (css) */
+.QuizPlayer-module__GNIRcq__container {
+  flex-direction: column;
+  gap: 24px;
+  display: flex;
+}
+
+.QuizPlayer-module__GNIRcq__progress {
+  flex-direction: column;
+  gap: 8px;
+  display: flex;
+}
+
+.QuizPlayer-module__GNIRcq__progressText {
+  color: #a3aed0;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.QuizPlayer-module__GNIRcq__progressBar {
+  background: #e9edf7;
+  border-radius: 3px;
+  height: 6px;
+  overflow: hidden;
+}
+
+.QuizPlayer-module__GNIRcq__progressFill {
+  background: linear-gradient(90deg, #4318ff, #7c3aed);
+  border-radius: 3px;
+  height: 100%;
+  transition: width .3s;
+}
+
+.QuizPlayer-module__GNIRcq__question {
+  color: #1b2559;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.QuizPlayer-module__GNIRcq__options {
+  flex-direction: column;
+  gap: 12px;
+  display: flex;
+}
+
+.QuizPlayer-module__GNIRcq__option {
+  color: #1b2559;
+  text-align: left;
+  cursor: pointer;
+  background: #f4f7fe;
+  border: 2px solid #0000;
+  border-radius: 12px;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 20px;
+  font-size: 15px;
+  transition: all .2s;
+  display: flex;
+}
+
+.QuizPlayer-module__GNIRcq__option:hover:not(:disabled) {
+  background: #e9e3ff;
+  border-color: #4318ff;
+}
+
+.QuizPlayer-module__GNIRcq__option:disabled {
+  cursor: default;
+}
+
+.QuizPlayer-module__GNIRcq__option.QuizPlayer-module__GNIRcq__correct {
+  background: #05cd991a;
+  border-color: #05cd99;
+}
+
+.QuizPlayer-module__GNIRcq__option.QuizPlayer-module__GNIRcq__incorrect {
+  background: #ee5d501a;
+  border-color: #ee5d50;
+}
+
+.QuizPlayer-module__GNIRcq__optionLetter {
+  color: #4318ff;
+  min-width: 24px;
+  font-weight: 700;
+}
+
+.QuizPlayer-module__GNIRcq__optionText {
+  flex: 1;
+}
+
+.QuizPlayer-module__GNIRcq__checkIcon {
+  color: #05cd99;
+  flex-shrink: 0;
+}
+
+.QuizPlayer-module__GNIRcq__crossIcon {
+  color: #ee5d50;
+  flex-shrink: 0;
+}
+
+.QuizPlayer-module__GNIRcq__explanation {
+  color: #2b3674;
+  background: #fafcfe;
+  border-left: 4px solid #4318ff;
+  border-radius: 12px;
+  padding: 16px;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.QuizPlayer-module__GNIRcq__explanation strong {
+  color: #1b2559;
+}
+
+.QuizPlayer-module__GNIRcq__nextBtn {
+  align-self: flex-start;
+  align-items: center;
+  gap: 8px;
+  display: inline-flex;
+}
+
+.QuizPlayer-module__GNIRcq__result {
+  text-align: center;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 48px 24px;
+  display: flex;
+}
+
+.QuizPlayer-module__GNIRcq__resultIcon {
+  margin-bottom: 16px;
+}
+
+.QuizPlayer-module__GNIRcq__resultTitle {
+  color: #1b2559;
+  margin-bottom: 8px;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.QuizPlayer-module__GNIRcq__resultScore {
+  color: #2b3674;
+  margin-bottom: 24px;
+  font-size: 18px;
+}
+
+.QuizPlayer-module__GNIRcq__empty {
+  text-align: center;
+  color: #a3aed0;
+  padding: 48px;
+}
+
+/*# sourceMappingURL=src_ab89fba3._.css.map*/

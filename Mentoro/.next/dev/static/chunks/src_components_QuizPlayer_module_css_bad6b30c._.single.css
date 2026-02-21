@@ -1,0 +1,154 @@
+/* [project]/src/components/QuizPlayer.module.css [app-client] (css) */
+.QuizPlayer-module__GNIRcq__container {
+  flex-direction: column;
+  gap: 24px;
+  display: flex;
+}
+
+.QuizPlayer-module__GNIRcq__progress {
+  flex-direction: column;
+  gap: 8px;
+  display: flex;
+}
+
+.QuizPlayer-module__GNIRcq__progressText {
+  color: #a3aed0;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.QuizPlayer-module__GNIRcq__progressBar {
+  background: #e9edf7;
+  border-radius: 3px;
+  height: 6px;
+  overflow: hidden;
+}
+
+.QuizPlayer-module__GNIRcq__progressFill {
+  background: linear-gradient(90deg, #4318ff, #7c3aed);
+  border-radius: 3px;
+  height: 100%;
+  transition: width .3s;
+}
+
+.QuizPlayer-module__GNIRcq__question {
+  color: #1b2559;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.QuizPlayer-module__GNIRcq__options {
+  flex-direction: column;
+  gap: 12px;
+  display: flex;
+}
+
+.QuizPlayer-module__GNIRcq__option {
+  color: #1b2559;
+  text-align: left;
+  cursor: pointer;
+  background: #f4f7fe;
+  border: 2px solid #0000;
+  border-radius: 12px;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 20px;
+  font-size: 15px;
+  transition: all .2s;
+  display: flex;
+}
+
+.QuizPlayer-module__GNIRcq__option:hover:not(:disabled) {
+  background: #e9e3ff;
+  border-color: #4318ff;
+}
+
+.QuizPlayer-module__GNIRcq__option:disabled {
+  cursor: default;
+}
+
+.QuizPlayer-module__GNIRcq__option.QuizPlayer-module__GNIRcq__correct {
+  background: #05cd991a;
+  border-color: #05cd99;
+}
+
+.QuizPlayer-module__GNIRcq__option.QuizPlayer-module__GNIRcq__incorrect {
+  background: #ee5d501a;
+  border-color: #ee5d50;
+}
+
+.QuizPlayer-module__GNIRcq__optionLetter {
+  color: #4318ff;
+  min-width: 24px;
+  font-weight: 700;
+}
+
+.QuizPlayer-module__GNIRcq__optionText {
+  flex: 1;
+}
+
+.QuizPlayer-module__GNIRcq__checkIcon {
+  color: #05cd99;
+  flex-shrink: 0;
+}
+
+.QuizPlayer-module__GNIRcq__crossIcon {
+  color: #ee5d50;
+  flex-shrink: 0;
+}
+
+.QuizPlayer-module__GNIRcq__explanation {
+  color: #2b3674;
+  background: #fafcfe;
+  border-left: 4px solid #4318ff;
+  border-radius: 12px;
+  padding: 16px;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.QuizPlayer-module__GNIRcq__explanation strong {
+  color: #1b2559;
+}
+
+.QuizPlayer-module__GNIRcq__nextBtn {
+  align-self: flex-start;
+  align-items: center;
+  gap: 8px;
+  display: inline-flex;
+}
+
+.QuizPlayer-module__GNIRcq__result {
+  text-align: center;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 48px 24px;
+  display: flex;
+}
+
+.QuizPlayer-module__GNIRcq__resultIcon {
+  margin-bottom: 16px;
+}
+
+.QuizPlayer-module__GNIRcq__resultTitle {
+  color: #1b2559;
+  margin-bottom: 8px;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.QuizPlayer-module__GNIRcq__resultScore {
+  color: #2b3674;
+  margin-bottom: 24px;
+  font-size: 18px;
+}
+
+.QuizPlayer-module__GNIRcq__empty {
+  text-align: center;
+  color: #a3aed0;
+  padding: 48px;
+}
+
+/*# sourceMappingURL=src_components_QuizPlayer_module_css_bad6b30c._.single.css.map*/

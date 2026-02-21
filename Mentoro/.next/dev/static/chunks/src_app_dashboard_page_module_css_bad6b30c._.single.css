@@ -1,0 +1,186 @@
+/* [project]/src/app/dashboard/page.module.css [app-client] (css) */
+.page-module__Fx1_7W__headerSection {
+  margin-bottom: 32px;
+}
+
+.page-module__Fx1_7W__welcomeTitle {
+  color: var(--text-main);
+  margin-bottom: 8px;
+  font-size: 34px;
+  font-weight: 700;
+}
+
+.page-module__Fx1_7W__welcomeSubtitle {
+  color: var(--text-secondary);
+  font-size: 16px;
+}
+
+.page-module__Fx1_7W__grid {
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-bottom: 20px;
+  display: grid;
+}
+
+.page-module__Fx1_7W__cardTitle {
+  color: var(--text-main);
+  margin-bottom: 24px;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.page-module__Fx1_7W__studySection {
+  margin-bottom: 20px;
+}
+
+.page-module__Fx1_7W__subLabel {
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+.page-module__Fx1_7W__courseCard {
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  background: #fff8f5;
+  border: 1px solid #0000;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  display: flex;
+}
+
+.page-module__Fx1_7W__courseCard:hover {
+  border-color: var(--warning);
+}
+
+.page-module__Fx1_7W__courseCard.page-module__Fx1_7W__blue {
+  background: #f4f7fe;
+}
+
+.page-module__Fx1_7W__deadlineItem {
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  font-size: 14px;
+  display: flex;
+}
+
+.page-module__Fx1_7W__deadlineInfo {
+  align-items: center;
+  gap: 8px;
+  display: flex;
+}
+
+.page-module__Fx1_7W__iconBox {
+  width: 20px;
+  height: 20px;
+  color: var(--primary);
+}
+
+.page-module__Fx1_7W__deadlineDate {
+  color: var(--text-secondary);
+  font-size: 12px;
+}
+
+.page-module__Fx1_7W__seeAll {
+  justify-content: center;
+  margin-top: 12px;
+  display: flex;
+}
+
+.page-module__Fx1_7W__chartContainer {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  display: flex;
+  position: relative;
+}
+
+.page-module__Fx1_7W__chartLabel {
+  text-align: center;
+  position: absolute;
+}
+
+.page-module__Fx1_7W__chartNumber {
+  color: var(--text-main);
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.page-module__Fx1_7W__chartSub {
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+.page-module__Fx1_7W__quizStats {
+  background: #fff;
+  border-radius: 12px;
+  justify-content: space-between;
+  padding: 10px;
+  display: flex;
+  box-shadow: 0 4px 10px #00000005;
+}
+
+.page-module__Fx1_7W__statItem {
+  border-radius: 8px;
+  padding: 4px 12px;
+  font-size: 12px;
+}
+
+.page-module__Fx1_7W__statCompleted {
+  color: var(--primary);
+  background: #e9e3ff;
+}
+
+.page-module__Fx1_7W__statRemaining {
+  color: #ffb547;
+  background: #fff6e5;
+}
+
+.page-module__Fx1_7W__greetingCard {
+  border-radius: var(--radius);
+  background: #fff;
+  grid-template-columns: 200px 1fr;
+  align-items: center;
+  gap: 20px;
+  padding: 0;
+  display: grid;
+  overflow: hidden;
+}
+
+.page-module__Fx1_7W__illustrationArea {
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  display: flex;
+}
+
+.page-module__Fx1_7W__summaryList {
+  flex-direction: column;
+  gap: 12px;
+  padding: 20px 20px 20px 0;
+  display: flex;
+}
+
+.page-module__Fx1_7W__summaryItem {
+  color: var(--text-secondary);
+  align-items: flex-start;
+  gap: 16px;
+  font-size: 14px;
+  display: flex;
+}
+
+.page-module__Fx1_7W__dayLabel {
+  min-width: 60px;
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.page-module__Fx1_7W__highlight {
+  color: var(--text-main);
+  font-weight: 600;
+}
+
+/*# sourceMappingURL=src_app_dashboard_page_module_css_bad6b30c._.single.css.map*/

@@ -1,19 +1,15 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { retrieveRelevantChunks } from '@/lib/rag';
-import OpenAI from 'openai';
+import { GoogleGenerativeAI } from "@google/generative-ai";
 
-// ~1 token ≈ 4 chars. Limit to fit 4K context models (input + system + response)
+
 const MAX_CONTEXT_CHARS = 6000;
 
 function truncateForContext(text: string): string {
     if (text.length <= MAX_CONTEXT_CHARS) return text;
-    return text.slice(0, MAX_CONTEXT_CHARS) + '\n\n[... документ обрезан из-за ограничения контекста модели ...]';
+    return text.slice(0, MAX_CONTEXT_CHARS) + '\n\n[... обрезано ...]';
 }
 
-const openai = new OpenAI({
-    apiKey: 'not-needed',
-    baseURL: 'http://localhost:1234/v1',
-});
+const genAI = new GoogleGenerativeAI("key");
 
 export async function POST(request: NextRequest) {
     try {
@@ -69,12 +65,14 @@ Example format:
         }
 
         const response = await openai.chat.completions.create({
-            model: 'local-model', // LM Studio usually ignores this or uses loaded model
+            model: 'gemini-1.5-flash', // Или gemini-1.5-pro для более сложных задач
             messages: [
                 { role: 'system', content: systemPrompt },
                 { role: 'user', content: userPrompt },
             ],
             stream: true,
+            // Для генерации квиза (JSON) Gemini лучше работает с этим параметром:
+            response_format: type === 'quiz' ? { type: 'json_object' } : undefined,
         });
 
         const stream = new ReadableStream({
