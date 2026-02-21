@@ -1,0 +1,191 @@
+.headerSection {
+    margin-bottom: 32px;
+}
+
+.welcomeTitle {
+    font-size: 34px;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-bottom: 8px;
+}
+
+.welcomeSubtitle {
+    color: var(--text-secondary);
+    font-size: 16px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.cardTitle {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-bottom: 24px;
+}
+
+/* Study Plan Widget */
+.studySection {
+    margin-bottom: 20px;
+}
+
+.subLabel {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-bottom: 8px;
+}
+
+.courseCard {
+    background: #FFF8F5;
+    /* Light orangeish for Data Structures */
+    border-radius: var(--radius-sm);
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    border: 1px solid transparent;
+}
+
+.courseCard:hover {
+    border-color: var(--warning);
+}
+
+.courseCard.blue {
+    background: #F4F7FE;
+    /* Light blue for Next exam */
+}
+
+/* Deadlines Widget */
+.deadlineItem {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+    font-size: 14px;
+}
+
+.deadlineInfo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.iconBox {
+    width: 20px;
+    height: 20px;
+    color: var(--primary);
+}
+
+.deadlineDate {
+    color: var(--text-secondary);
+    font-size: 12px;
+}
+
+.seeAll {
+    display: flex;
+    justify-content: center;
+    margin-top: 12px;
+}
+
+/* Quizzes Overview */
+.chartContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 200px;
+    position: relative;
+}
+
+.chartLabel {
+    text-align: center;
+    position: absolute;
+}
+
+.chartNumber {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--text-main);
+}
+
+.chartSub {
+    font-size: 14px;
+    color: var(--text-secondary);
+}
+
+.quizStats {
+    display: flex;
+    justify-content: space-between;
+    background: white;
+    border-radius: 12px;
+    padding: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
+}
+
+.statItem {
+    font-size: 12px;
+    padding: 4px 12px;
+    border-radius: 8px;
+}
+
+.statCompleted {
+    color: var(--primary);
+    background: #E9E3FF;
+}
+
+.statRemaining {
+    color: #FFB547;
+    background: #FFF6E5;
+}
+
+
+/* Greeting & Summary Section (Bottom) */
+.greetingCard {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    align-items: center;
+    gap: 20px;
+    background: white;
+    border-radius: var(--radius);
+    padding: 0;
+    overflow: hidden;
+}
+
+.illustrationArea {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.summaryList {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 20px 20px 20px 0;
+}
+
+.summaryItem {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    font-size: 14px;
+    color: var(--text-secondary);
+}
+
+.dayLabel {
+    min-width: 60px;
+    font-weight: 600;
+    color: var(--primary);
+    /* Example color */
+}
+
+.highlight {
+    color: var(--text-main);
+    font-weight: 600;
+}
