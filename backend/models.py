@@ -1,7 +1,7 @@
 import uuid
 from datetime import datetime
 
-from sqlalchemy import DateTime, Float, String, func, Integer, JSON
+from sqlalchemy import DateTime, Float, String, func, Integer, JSON, ForeignKey
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import Mapped, mapped_column
 
@@ -18,7 +18,6 @@ class User(Base):
     email: Mapped[str] = mapped_column(String, nullable=False, unique=True, index=True)
     password_hash: Mapped[str] = mapped_column(String, nullable=False)
 
-   
     major: Mapped[str] = mapped_column(
         String, nullable=False, server_default="Computer Science"
     )
@@ -29,19 +28,41 @@ class User(Base):
         Float, nullable=False, server_default="3.5"
     )
 
-    
     study_goal: Mapped[str] = mapped_column(
         String, nullable=False, server_default="exam"
-    ) 
-
+    )
     weak_subjects: Mapped[list] = mapped_column(
         JSON, nullable=False, server_default="[]"
-    )  
-
+    )
     study_hours_per_week: Mapped[int] = mapped_column(
         Integer, nullable=False, server_default="5"
     )
 
     created_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True), server_default=func.now(), nullable=False
+    )
+
+
+class QuizHistory(Base):
+    __tablename__ = "quiz_history"
+
+    id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
+
+    user_id: Mapped[uuid.UUID] = mapped_column(
+        UUID(as_uuid=True),
+        ForeignKey("users.id"),
+        nullable=False,
+        index=True,
+    )
+
+    topic: Mapped[str] = mapped_column(String, nullable=False)
+
+    score: Mapped[int] = mapped_column(Integer, nullable=False)
+    total_questions: Mapped[int] = mapped_column(Integer, nullable=False)
+    percentage: Mapped[int] = mapped_column(Integer, nullable=False)
+
+    created_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True),
+        server_default=func.now(),
+        nullable=False,
     )

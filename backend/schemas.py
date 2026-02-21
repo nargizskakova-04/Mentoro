@@ -29,12 +29,26 @@ class UserRead(BaseModel):
     major: str
     group: str
     gpa: float
-    # для персонализации 
     study_goal: str
     weak_subjects: List[str]
     study_hours_per_week: int
     createdAt: datetime
-    
+
+
+class QuizHistoryCreate(BaseModel):
+    topic: str
+    score: int
+    total_questions: int
+
+
+class QuizHistoryRead(BaseModel):
+    id: int
+    topic: str
+    score: int
+    total_questions: int
+    percentage: int
+    createdAt: datetime
+
 
 def create_access_token(data: Dict[str, Any], expires_delta: Optional[timedelta] = None) -> str:
     to_encode = data.copy()
@@ -69,4 +83,3 @@ class QuizGenerateRequest(BaseModel):
 class QuizChatRequest(BaseModel):
     messages: List[ChatMessage]
     documentText: Optional[str] = None
-
