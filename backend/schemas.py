@@ -4,6 +4,7 @@ from uuid import UUID
 
 from jose import JWTError, jwt
 from pydantic import BaseModel, ConfigDict, EmailStr, Field
+import os
 
 
 JWT_SECRET = "dev-secret-key"
@@ -11,15 +12,7 @@ JWT_ALGORITHM = "HS256"
 JWT_EXPIRE_MINUTES = 60 * 24  # 1 day
 
 
-class Settings(BaseModel):
-    jwt_secret: str = Field(default=JWT_SECRET)
-    jwt_algorithm: str = Field(default=JWT_ALGORITHM)
-    jwt_expire_minutes: int = Field(default=JWT_EXPIRE_MINUTES)
-
-    model_config = ConfigDict(arbitrary_types_allowed=True)
-
-
-settings = Settings()
+JWT_SECRET = os.getenv("JWT_SECRET", "dev-secret-key")
 
 
 class UserCreate(BaseModel):

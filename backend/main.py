@@ -5,6 +5,10 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from routers import auth, chat, quizzes
 
+from dotenv import load_dotenv
+
+load_dotenv()
+
 
 app = FastAPI(title="CampusMate AI Backend")
 

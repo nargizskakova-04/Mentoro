@@ -1,5 +1,6 @@
 from typing import AsyncGenerator
 
+import os
 import httpx
 from fastapi import APIRouter, HTTPException
 from fastapi.responses import StreamingResponse
@@ -9,8 +10,7 @@ from schemas import ChatRequest
 router = APIRouter()
 
 
-LM_STUDIO_BASE_URL = "http://localhost:1234/v1"
-
+LM_STUDIO_BASE_URL = os.getenv("LM_STUDIO_URL", "http://localhost:1234/v1")
 
 @router.post("/chat")
 async def ai_chat(request_body: ChatRequest):

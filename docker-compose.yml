@@ -1,0 +1,26 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: campusmate
+      POSTGRES_USER: campusmate
+      POSTGRES_PASSWORD: campusmate123
+    ports:
+      - "5433:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  backend:
+    build: ./backend
+    ports:
+      - "8000:8000"
+    environment:
+      DATABASE_URL: postgresql+asyncpg://campusmate:campusmate123@postgres:5432/campusmate
+      JWT_SECRET: dev-secret-key
+      LM_STUDIO_URL: http://host.docker.internal:1234/v1
+      FRONTEND_ORIGIN: http://localhost:3000
+    depends_on:
+      - postgres
+
+volumes:
+  pgdata:
