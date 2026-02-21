@@ -29,8 +29,12 @@ class UserRead(BaseModel):
     major: str
     group: str
     gpa: float
+    # для персонализации 
+    study_goal: str
+    weak_subjects: List[str]
+    study_hours_per_week: int
     createdAt: datetime
-
+    
 
 def create_access_token(data: Dict[str, Any], expires_delta: Optional[timedelta] = None) -> str:
     to_encode = data.copy()

@@ -1,7 +1,7 @@
 import uuid
 from datetime import datetime
 
-from sqlalchemy import DateTime, Float, String, func
+from sqlalchemy import DateTime, Float, String, func, Integer, JSON
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import Mapped, mapped_column
 
@@ -18,12 +18,30 @@ class User(Base):
     email: Mapped[str] = mapped_column(String, nullable=False, unique=True, index=True)
     password_hash: Mapped[str] = mapped_column(String, nullable=False)
 
-    major: Mapped[str] = mapped_column(String, nullable=False, server_default="Computer Science")
-    # Column name group_name to satisfy schema requirement, attribute name group for API
-    group: Mapped[str] = mapped_column("group_name", String, nullable=False, server_default="CS-101")
-    gpa: Mapped[float] = mapped_column(Float, nullable=False, server_default="3.5")
+   
+    major: Mapped[str] = mapped_column(
+        String, nullable=False, server_default="Computer Science"
+    )
+    group: Mapped[str] = mapped_column(
+        "group_name", String, nullable=False, server_default="CS-101"
+    )
+    gpa: Mapped[float] = mapped_column(
+        Float, nullable=False, server_default="3.5"
+    )
+
+    
+    study_goal: Mapped[str] = mapped_column(
+        String, nullable=False, server_default="exam"
+    ) 
+
+    weak_subjects: Mapped[list] = mapped_column(
+        JSON, nullable=False, server_default="[]"
+    )  
+
+    study_hours_per_week: Mapped[int] = mapped_column(
+        Integer, nullable=False, server_default="5"
+    )
 
     created_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True), server_default=func.now(), nullable=False
     )
-
