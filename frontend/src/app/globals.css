@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  /* Colors - Mentoro Brand */
+  --background: #F8F6FC;
+  --card-bg: #FFFFFF;
+
+  --primary: #6B4BA1;
+  --primary-hover: #563A82;
+  --secondary: #9B7DC1;
+
+  --text-main: #2D1B4E;
+  --text-secondary: #8B7BA8;
+  --text-light: #E8E3F0;
+
+  --border: #E8E3F0;
+  --input-bg: #F8F6FC;
+
+  --success: #05CD99;
+  --warning: #FFB547;
+  --error: #EE5D50;
+
+  /* Spacing & Radius */
+  --radius: 20px;
+  --radius-sm: 10px;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  color: var(--text-main);
+  background: var(--background);
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Utilities */
+.card {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: 0px 18px 40px rgba(112, 144, 176, 0.12);
+}
