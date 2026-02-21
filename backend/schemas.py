@@ -29,15 +29,12 @@ class UserRead(BaseModel):
     major: str
     group: str
     gpa: float
+    # для персонализации 
+    study_goal: str
+    weak_subjects: List[str]
+    study_hours_per_week: int
     createdAt: datetime
-
-
-class UserUpdate(BaseModel):
-    name: Optional[str] = None
-    major: Optional[str] = None
-    group: Optional[str] = None
-    gpa: Optional[float] = None
-
+    
 
 def create_access_token(data: Dict[str, Any], expires_delta: Optional[timedelta] = None) -> str:
     to_encode = data.copy()
@@ -72,29 +69,3 @@ class QuizGenerateRequest(BaseModel):
 class QuizChatRequest(BaseModel):
     messages: List[ChatMessage]
     documentText: Optional[str] = None
-
-
-# Assignments (quiz/assignment list items)
-class AssignmentCreate(BaseModel):
-    title: str
-    course: str
-    status: Optional[str] = "Pending"
-    score: Optional[str] = "-"
-
-
-class AssignmentUpdate(BaseModel):
-    title: Optional[str] = None
-    course: Optional[str] = None
-    status: Optional[str] = None
-    score: Optional[str] = None
-
-
-class AssignmentRead(BaseModel):
-    id: UUID
-    user_id: UUID
-    title: str
-    course: str
-    status: str
-    score: Optional[str] = None
-    createdAt: datetime
-
