@@ -1,25 +1,14 @@
+import os
 from datetime import datetime, timedelta, timezone
 from typing import Any, Dict, List, Optional
 from uuid import UUID
 
 from jose import JWTError, jwt
-from pydantic import BaseModel, ConfigDict, EmailStr, Field
+from pydantic import BaseModel, EmailStr
 
-
-JWT_SECRET = "dev-secret-key"
+JWT_SECRET = os.getenv("JWT_SECRET", "dev-secret-key")
 JWT_ALGORITHM = "HS256"
-JWT_EXPIRE_MINUTES = 60 * 24  # 1 day
-
-
-class Settings(BaseModel):
-    jwt_secret: str = Field(default=JWT_SECRET)
-    jwt_algorithm: str = Field(default=JWT_ALGORITHM)
-    jwt_expire_minutes: int = Field(default=JWT_EXPIRE_MINUTES)
-
-    model_config = ConfigDict(arbitrary_types_allowed=True)
-
-
-settings = Settings()
+JWT_EXPIRE_MINUTES = 60 * 24
 
 
 class UserCreate(BaseModel):
@@ -46,17 +35,15 @@ class UserRead(BaseModel):
 def create_access_token(data: Dict[str, Any], expires_delta: Optional[timedelta] = None) -> str:
     to_encode = data.copy()
     expire = datetime.now(timezone.utc) + (
-        expires_delta if expires_delta is not None else timedelta(minutes=settings.jwt_expire_minutes)
+        expires_delta if expires_delta is not None else timedelta(minutes=JWT_EXPIRE_MINUTES)
     )
     to_encode.update({"exp": expire})
-    encoded_jwt = jwt.encode(to_encode, settings.jwt_secret, algorithm=settings.jwt_algorithm)
-    return encoded_jwt
+    return jwt.encode(to_encode, JWT_SECRET, algorithm=JWT_ALGORITHM)
 
 
 def verify_access_token(token: str) -> Optional[Dict[str, Any]]:
     try:
-        payload = jwt.decode(token, settings.jwt_secret, algorithms=[settings.jwt_algorithm])
-        return payload
+        return jwt.decode(token, JWT_SECRET, algorithms=[JWT_ALGORITHM])
     except JWTError:
         return None
 

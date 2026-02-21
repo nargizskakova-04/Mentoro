@@ -55,7 +55,7 @@ async def register_user(payload: UserCreate, db: AsyncSession = Depends(get_db))
 
     return JSONResponse(
         status_code=201,
-        content={"message": "User created successfully", "user": user_out.model_dump()},
+        content={"message": "User created successfully", "user": user_out.model_dump(mode="json")},
     )
 
 
@@ -131,6 +131,6 @@ async def get_me(request: Request, db: AsyncSession = Depends(get_db)):
 
     return JSONResponse(
         status_code=200,
-        content={"user": user_out.model_dump()},
+        content={"user": user_out.model_dump(mode="json")},
     )
 

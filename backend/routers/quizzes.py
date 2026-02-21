@@ -1,4 +1,5 @@
 import io
+import os
 import uuid
 from typing import AsyncGenerator
 
@@ -12,7 +13,7 @@ from schemas import QuizChatRequest, QuizGenerateRequest
 router = APIRouter()
 
 
-LM_STUDIO_BASE_URL = "http://localhost:1234/v1"
+LM_STUDIO_BASE_URL = os.getenv("LM_STUDIO_URL", "http://localhost:1234/v1")
 MAX_CONTEXT_CHARS = 6000
 
 
