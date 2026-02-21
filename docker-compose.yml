@@ -2,9 +2,9 @@ services:
   postgres:
     image: postgres:16-alpine
     environment:
-      POSTGRES_DB: campusmate
-      POSTGRES_USER: campusmate
-      POSTGRES_PASSWORD: campusmate123
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     ports:
       - "5433:5432"
     volumes:
@@ -15,8 +15,8 @@ services:
     ports:
       - "8000:8000"
     environment:
-      DATABASE_URL: postgresql+asyncpg://campusmate:campusmate123@postgres:5432/campusmate
-      JWT_SECRET: dev-secret-key
+      DATABASE_URL: postgresql+asyncpg://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}
+      JWT_SECRET: ${JWT_SECRET}
       LM_STUDIO_URL: http://host.docker.internal:1234/v1
       FRONTEND_ORIGIN: http://localhost:3000
     depends_on:

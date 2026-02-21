@@ -22,10 +22,3 @@ async def get_db() -> AsyncGenerator[AsyncSession, None]:
     async with AsyncSessionLocal() as session:
         yield session
 
-
-def get_database_url() -> str:
-    """
-    Helper for Alembic and other tooling to read the database URL.
-    """
-    return DATABASE_URL
-

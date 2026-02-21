@@ -1,16 +1,25 @@
 import os
+from contextlib import asynccontextmanager
 
+from dotenv import load_dotenv
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
+from database import engine, Base
+from models import User  # noqa: F401 — needed for Base.metadata
 from routers import auth, chat, quizzes
-
-from dotenv import load_dotenv
 
 load_dotenv()
 
 
-app = FastAPI(title="CampusMate AI Backend")
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    async with engine.begin() as conn:
+        await conn.run_sync(Base.metadata.create_all)
+    yield
+
+
+app = FastAPI(title="CampusMate AI Backend", lifespan=lifespan)
 
 frontend_origin = os.getenv("FRONTEND_ORIGIN", "http://localhost:3000")
 
