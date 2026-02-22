@@ -37,6 +37,21 @@ class UserRead(BaseModel):
     createdAt: datetime
 
 
+class QuizHistoryCreate(BaseModel):
+    topic: str
+    score: int
+    total_questions: int
+
+
+class QuizHistoryRead(BaseModel):
+    id: int
+    topic: str
+    score: int
+    total_questions: int
+    percentage: int
+    createdAt: datetime
+
+
 class UserUpdate(BaseModel):
     name: Optional[str] = None
     major: Optional[str] = None
@@ -85,6 +100,7 @@ class QuizGenerateRequest(BaseModel):
 
 class QuizChatRequest(BaseModel):
     messages: List[ChatMessage]
+    documentText: Optional[str] = None
     documentText: Optional[str] = None
 
 

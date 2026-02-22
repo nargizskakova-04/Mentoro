@@ -1,6 +1,7 @@
 import uuid
 from datetime import datetime
 
+from sqlalchemy import DateTime, Float, String, func, Integer, JSON, ForeignKey
 from sqlalchemy import DateTime, Float, ForeignKey, String, func, Integer, JSON
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import Mapped, mapped_column
@@ -43,6 +44,28 @@ class User(Base):
     )
 
 
+class QuizHistory(Base):
+    __tablename__ = "quiz_history"
+
+    id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
+
+    user_id: Mapped[uuid.UUID] = mapped_column(
+        UUID(as_uuid=True),
+        ForeignKey("users.id"),
+        nullable=False,
+        index=True,
+    )
+
+    topic: Mapped[str] = mapped_column(String, nullable=False)
+
+    score: Mapped[int] = mapped_column(Integer, nullable=False)
+    total_questions: Mapped[int] = mapped_column(Integer, nullable=False)
+    percentage: Mapped[int] = mapped_column(Integer, nullable=False)
+
+    created_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True),
+        server_default=func.now(),
+        nullable=False,
 class Assignment(Base):
     __tablename__ = "assignments"
 
