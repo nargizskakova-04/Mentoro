@@ -10,7 +10,9 @@ from schemas import ChatRequest
 router = APIRouter()
 
 
-LM_STUDIO_BASE_URL = os.getenv("LM_STUDIO_URL", "http://localhost:1234/v1")
+GROQ_BASE_URL = "https://api.groq.com/openai/v1"
+GROQ_API_KEY = os.getenv("GROQ_API_KEY", "")
+
 
 @router.post("/chat")
 async def ai_chat(request_body: ChatRequest):
@@ -31,24 +33,24 @@ async def ai_chat(request_body: ChatRequest):
     }
 
     payload = {
-        "model": "local-model",
+        "model": "llama-3.3-70b-versatile",
         "messages": [system_prompt, *[m.model_dump() for m in request_body.messages]],
         "stream": True,
     }
 
+    headers = {"Authorization": f"Bearer {GROQ_API_KEY}"} if GROQ_API_KEY else {}
+
     async def stream_completion() -> AsyncGenerator[bytes, None]:
-        lm_url = f"{LM_STUDIO_BASE_URL}/chat/completions"
+        groq_url = f"{GROQ_BASE_URL}/chat/completions"
         async with httpx.AsyncClient(timeout=None) as client:
             try:
-                async with client.stream("POST", lm_url, json=payload) as resp:
+                async with client.stream("POST", groq_url, json=payload, headers=headers) as resp:
                     resp.raise_for_status()
                     async for chunk in resp.aiter_bytes():
                         if chunk:
                             yield chunk
             except httpx.HTTPError as exc:
-                err_msg = (
-                    "Failed to connect to AI service. Ensure LM Studio is running."
-                )
+                err_msg = "Failed to connect to AI service (Groq API)."
                 raise HTTPException(status_code=500, detail=err_msg) from exc
 
     return StreamingResponse(stream_completion(), media_type="text/plain; charset=utf-8")

@@ -13,7 +13,8 @@ from schemas import QuizChatRequest, QuizGenerateRequest
 router = APIRouter()
 
 
-LM_STUDIO_BASE_URL = os.getenv("LM_STUDIO_URL", "http://localhost:1234/v1")
+GROQ_BASE_URL = "https://api.groq.com/openai/v1"
+GROQ_API_KEY = os.getenv("GROQ_API_KEY", "")
 MAX_CONTEXT_CHARS = 6000
 
 
@@ -117,7 +118,7 @@ async def generate_from_document(body: QuizGenerateRequest):
         )
 
     payload = {
-        "model": "local-model",
+        "model": "llama-3.3-70b-versatile",
         "messages": [
             {"role": "system", "content": system_prompt},
             {"role": "user", "content": user_prompt},
@@ -125,11 +126,13 @@ async def generate_from_document(body: QuizGenerateRequest):
         "stream": True,
     }
 
+    headers = {"Authorization": f"Bearer {GROQ_API_KEY}"} if GROQ_API_KEY else {}
+
     async def stream_completion() -> AsyncGenerator[bytes, None]:
-        lm_url = f"{LM_STUDIO_BASE_URL}/chat/completions"
+        groq_url = f"{GROQ_BASE_URL}/chat/completions"
         async with httpx.AsyncClient(timeout=None) as client:
             try:
-                async with client.stream("POST", lm_url, json=payload) as resp:
+                async with client.stream("POST", groq_url, json=payload, headers=headers) as resp:
                     resp.raise_for_status()
                     async for chunk in resp.aiter_bytes():
                         if chunk:
@@ -175,16 +178,18 @@ async def quiz_chat(body: QuizChatRequest):
     }
 
     payload = {
-        "model": "local-model",
+        "model": "llama-3.3-70b-versatile",
         "messages": [system_prompt, *[m.model_dump() for m in body.messages]],
         "stream": True,
     }
 
+    headers = {"Authorization": f"Bearer {GROQ_API_KEY}"} if GROQ_API_KEY else {}
+
     async def stream_completion() -> AsyncGenerator[bytes, None]:
-        lm_url = f"{LM_STUDIO_BASE_URL}/chat/completions"
+        groq_url = f"{GROQ_BASE_URL}/chat/completions"
         async with httpx.AsyncClient(timeout=None) as client:
             try:
-                async with client.stream("POST", lm_url, json=payload) as resp:
+                async with client.stream("POST", groq_url, json=payload, headers=headers) as resp:
                     resp.raise_for_status()
                     async for chunk in resp.aiter_bytes():
                         if chunk:

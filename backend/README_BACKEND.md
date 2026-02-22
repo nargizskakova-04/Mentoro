@@ -3,7 +3,7 @@
 This directory contains the FastAPI backend service for mentoro AI. It provides:
 
 - **Auth** (`/api/auth/*`) with JWT cookies and PostgreSQL via SQLAlchemy (async)
-- **AI Chat** (`/api/ai/chat`) that proxies to a local LM Studio instance
+- **AI Chat** (`/api/ai/chat`) that proxies to the Groq API (OpenAI-compatible)
 - **Quizzes** (`/api/quizzes/*`) for document upload, quiz generation, and document-aware chat
 - **Health check** at `/health`
 
@@ -28,14 +28,14 @@ The backend container uses the following environment variables (see `docker-comp
 
 - `DATABASE_URL=postgresql+asyncpg://mentoro:mentoro123@postgres:5432/mentoro`
 - `JWT_SECRET=dev-secret-key`
-- `LM_STUDIO_URL=http://host.docker.internal:1234/v1`
+- `GROQ_API_KEY=<your Groq API key>`
 
 After the containers are up, apply migrations inside the `backend` container:
 
 ```bash
 docker compose exec backend bash
 cd /app
-alembic upgrade head
+
 ```
 
 ---
@@ -74,19 +74,10 @@ Create a `.env` file in `backend/` (or export env vars in your shell) with at le
 ```env
 DATABASE_URL=postgresql+asyncpg://mentoro:mentoro123@localhost:5432/mentoro
 JWT_SECRET=dev-secret-key
-LM_STUDIO_URL=http://localhost:1234/v1
+GROQ_API_KEY=your_groq_api_key_here
 FRONTEND_ORIGIN=http://localhost:3000
 ```
 
-#### 4. Run Alembic migrations
-
-Still in `backend/`:
-
-```bash
-alembic upgrade head
-```
-
-This creates the `users` table.
 
 #### 5. Start the FastAPI server
 
@@ -118,7 +109,7 @@ The backend will be available at `http://localhost:8000`.
 - **AI Chat**
   - `POST /api/ai/chat`
     - Body: `{ "messages": [{ "role": "user" | "assistant" | "system", "content": string }, ...] }`
-    - Streams back plain text from LM Studio.
+    - Streams back plain text from the Groq API.
 
 - **Quizzes**
   - `POST /api/quizzes/upload`
@@ -139,7 +130,7 @@ The backend will be available at `http://localhost:8000`.
 - **DATABASE_URL**: Async SQLAlchemy URL for PostgreSQL using `asyncpg`, e.g.
   - `postgresql+asyncpg://mentoro:mentoro123@localhost:5432/mentoro`
 - **JWT_SECRET**: Secret key for signing JWTs.
-- **LM_STUDIO_URL**: Base URL for the LM Studio API (usually `http://localhost:1234/v1` or `http://host.docker.internal:1234/v1` in Docker).
+- **GROQ_API_KEY**: API key for the Groq API (get one at [console.groq.com](https://console.groq.com)). Used for AI chat and quiz generation.
 - **FRONTEND_ORIGIN**: Allowed CORS origin for the Next.js app (default: `http://localhost:3000`).
 
 ---
