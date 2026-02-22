@@ -23,12 +23,17 @@
 2. **Создайте файл `.env` в корне проекта** (рядом с `docker-compose.yml`):
 
    ```env
+   # PostgreSQL
    POSTGRES_DB=mentoro
    POSTGRES_USER=mentoro
    POSTGRES_PASSWORD=mentoro123
-   JWT_SECRET=ваш-секретный-ключ-для-jwt
-   GROQ_API_KEY=ваш_ключ_groq
-   FRONTEND_ORIGIN=http://localhost:3000
+
+   # JWT
+   JWT_SECRET=secret
+
+   # OpenAI (required)
+   GROQ_API_KEY=your_api_key
+   GROQ_MODEL=llama-3.3-70b-versatile
    ```
 
    Ключ Groq можно получить на [console.groq.com](https://console.groq.com).
