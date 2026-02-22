@@ -181,18 +181,18 @@ async def get_me(request: Request, db: AsyncSession = Depends(get_db)):
         createdAt=user.created_at,
     )
 
-    return JSONResponse(
-        status_code=200,
-        content={"user": user_out.model_dump(mode="json")},
     user = await db.get(User, decoded["userId"])
-    if not user:
-        return JSONResponse(status_code=404, content={"message": "User not found"})
 
-    return JSONResponse(
-        status_code=200,
-        content={"user": _user_to_read(user).model_dump(mode="json")},
+    if not user:
+        return JSONResponse(
+        status_code=404,
+        content={"message": "User not found"}
     )
 
+    return JSONResponse(
+    status_code=200,
+    content={"user": _user_to_read(user).model_dump(mode="json")},
+)
 
 @router.patch("/me")
 async def update_me(

@@ -2,7 +2,6 @@ import uuid
 from datetime import datetime
 
 from sqlalchemy import DateTime, Float, String, func, Integer, JSON, ForeignKey
-from sqlalchemy import DateTime, Float, ForeignKey, String, func, Integer, JSON
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import Mapped, mapped_column
 
@@ -66,6 +65,7 @@ class QuizHistory(Base):
         DateTime(timezone=True),
         server_default=func.now(),
         nullable=False,
+    )
 class Assignment(Base):
     __tablename__ = "assignments"
 
