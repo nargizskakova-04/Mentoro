@@ -6,8 +6,8 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from database import engine, Base
-from models import Assignment, User  # noqa: F401 — needed for Base.metadata
-from routers import assignments, auth, chat, quizzes
+from models import User, QuizHistory, Assignment  # noqa: F401
+from routers import auth, chat, quizzes, history, recommendations, assignments
 
 load_dotenv()
 
@@ -40,5 +40,7 @@ async def health():
 app.include_router(auth.router, prefix="/api/auth", tags=["auth"])
 app.include_router(chat.router, prefix="/api/ai", tags=["ai"])
 app.include_router(quizzes.router, prefix="/api/quizzes", tags=["quizzes"])
+app.include_router(history.router, prefix="/api/history", tags=["history"])
+app.include_router(recommendations.router, prefix="/api/recommendations", tags=["recommendations"])
 app.include_router(assignments.router, prefix="/api/assignments", tags=["assignments"])
 

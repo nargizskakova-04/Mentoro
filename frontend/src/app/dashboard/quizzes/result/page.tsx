@@ -51,9 +51,20 @@ function ResultContent() {
                     while (true) {
                         const { done, value } = await reader.read();
                         if (done) break;
-                        const chunk = decoder.decode(value, { stream: true });
-                        fullText += chunk;
-                        setSummary((prev) => prev + chunk);
+                        const text = decoder.decode(value, { stream: true });
+                        const lines = text.split('\n');
+                        for (const line of lines) {
+                            if (line.startsWith('data: ') && line !== 'data: [DONE]') {
+                                try {
+                                    const json = JSON.parse(line.slice(6));
+                                    const delta = json.choices?.[0]?.delta?.content;
+                                    if (delta) {
+                                        fullText += delta;
+                                        setSummary((prev) => prev + delta);
+                                    }
+                                } catch {}
+                            }
+                        }
                     }
                     setSummary(fullText);
                     setIsLoading(false);
@@ -70,7 +81,17 @@ function ResultContent() {
                     while (true) {
                         const { done, value } = await reader.read();
                         if (done) break;
-                        fullText += decoder.decode(value, { stream: true });
+                        const text = decoder.decode(value, { stream: true });
+                        const lines = text.split('\n');
+                        for (const line of lines) {
+                            if (line.startsWith('data: ') && line !== 'data: [DONE]') {
+                                try {
+                                    const json = JSON.parse(line.slice(6));
+                                    const delta = json.choices?.[0]?.delta?.content;
+                                    if (delta) fullText += delta;
+                                } catch {}
+                            }
+                        }
                     }
 
                     try {

@@ -13,7 +13,8 @@ from schemas import QuizChatRequest, QuizGenerateRequest
 router = APIRouter()
 
 
-LM_STUDIO_BASE_URL = os.getenv("LM_STUDIO_URL", "http://localhost:1234/v1")
+GROQ_BASE_URL = "https://api.groq.com/openai/v1"
+GROQ_API_KEY = os.getenv("GROQ_API_KEY", "")
 MAX_CONTEXT_CHARS = 6000
 
 
@@ -96,7 +97,7 @@ async def generate_from_document(body: QuizGenerateRequest):
         user_prompt = f"Study the following document and explain what it is about:\n\n{context_text}"
     else:
         system_prompt = (
-            "You are a strict output generator. You must generate a JSON array of 15-20 "
+            "You are a strict output generator. You must generate a JSON array of 10 "
             "multiple choice questions.\n\n"
             "IMPORTANT: Questions must be about the SUBJECT MATTER and LEARNING CONTENT inside "
             "the document - test the student's understanding of the concepts, definitions, "
@@ -112,12 +113,12 @@ async def generate_from_document(body: QuizGenerateRequest):
             '- "explanation": string (brief explanation referring to the document content)\n'
         )
         user_prompt = (
-            "Generate 15-20 multiple choice questions that test understanding of the material "
+            "Generate exactly 10 multiple choice questions that test understanding of the material "
             f"in this document:\n\n{context_text}"
         )
 
     payload = {
-        "model": "local-model",
+        "model": "llama-3.3-70b-versatile",
         "messages": [
             {"role": "system", "content": system_prompt},
             {"role": "user", "content": user_prompt},
@@ -125,11 +126,13 @@ async def generate_from_document(body: QuizGenerateRequest):
         "stream": True,
     }
 
+    headers = {"Authorization": f"Bearer {GROQ_API_KEY}"} if GROQ_API_KEY else {}
+
     async def stream_completion() -> AsyncGenerator[bytes, None]:
-        lm_url = f"{LM_STUDIO_BASE_URL}/chat/completions"
+        groq_url = f"{GROQ_BASE_URL}/chat/completions"
         async with httpx.AsyncClient(timeout=None) as client:
             try:
-                async with client.stream("POST", lm_url, json=payload) as resp:
+                async with client.stream("POST", groq_url, json=payload, headers=headers) as resp:
                     resp.raise_for_status()
                     async for chunk in resp.aiter_bytes():
                         if chunk:
@@ -175,16 +178,18 @@ async def quiz_chat(body: QuizChatRequest):
     }
 
     payload = {
-        "model": "local-model",
+        "model": "llama-3.3-70b-versatile",
         "messages": [system_prompt, *[m.model_dump() for m in body.messages]],
         "stream": True,
     }
 
+    headers = {"Authorization": f"Bearer {GROQ_API_KEY}"} if GROQ_API_KEY else {}
+
     async def stream_completion() -> AsyncGenerator[bytes, None]:
-        lm_url = f"{LM_STUDIO_BASE_URL}/chat/completions"
+        groq_url = f"{GROQ_BASE_URL}/chat/completions"
         async with httpx.AsyncClient(timeout=None) as client:
             try:
-                async with client.stream("POST", lm_url, json=payload) as resp:
+                async with client.stream("POST", groq_url, json=payload, headers=headers) as resp:
                     resp.raise_for_status()
                     async for chunk in resp.aiter_bytes():
                         if chunk:
