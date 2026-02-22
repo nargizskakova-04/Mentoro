@@ -9,6 +9,8 @@ from database import engine, Base
 from models import User, QuizHistory  
 from routers import auth, chat, quizzes, history
 from routers import recommendations
+from models import Assignment, User  # noqa: F401 — needed for Base.metadata
+from routers import assignments, auth, chat, quizzes
 
 load_dotenv()
 
@@ -20,7 +22,7 @@ async def lifespan(app: FastAPI):
     yield
 
 
-app = FastAPI(title="CampusMate AI Backend", lifespan=lifespan)
+app = FastAPI(title="mentoro AI Backend", lifespan=lifespan)
 
 frontend_origin = os.getenv("FRONTEND_ORIGIN", "http://localhost:3000")
 
@@ -43,3 +45,5 @@ app.include_router(chat.router, prefix="/api/ai", tags=["ai"])
 app.include_router(quizzes.router, prefix="/api/quizzes", tags=["quizzes"])
 app.include_router(history.router, prefix="/api/history", tags=["history"])
 app.include_router(recommendations.router, prefix="/api/recommendations", tags=["recommendations"])
+app.include_router(assignments.router, prefix="/api/assignments", tags=["assignments"])
+

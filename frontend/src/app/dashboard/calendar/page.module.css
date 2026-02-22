@@ -1,0 +1,160 @@
+.container {
+    display: flex;
+    gap: 24px;
+}
+
+.mainContent {
+    flex: 1;
+}
+
+.titleSection {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.monthNav {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.monthTitle {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--text-main);
+}
+
+.navButtons {
+    display: flex;
+    gap: 8px;
+}
+
+.navBtn {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--text-secondary);
+}
+
+.filterSection {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.filterChip {
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.filterChip.labs {
+    background: #E9E3FF;
+    color: var(--primary);
+}
+
+.filterChip.assignments {
+    background: #E6F7FF;
+    color: #0095FF;
+}
+
+.filterChip.exams {
+    background: #FFF6E5;
+    color: #FFB547;
+}
+
+.calendarGrid {
+    background: white;
+    border-radius: var(--radius);
+    padding: 24px;
+    box-shadow: 0px 18px 40px rgba(112, 144, 176, 0.12);
+}
+
+.weekHeader {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 12px;
+    margin-bottom: 12px;
+}
+
+.dayLabel {
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 14px;
+}
+
+.daysGrid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8px;
+    min-height: 500px;
+}
+
+.dayCell {
+    border-radius: 8px;
+    padding: 8px;
+    position: relative;
+    min-height: 100px;
+}
+
+.dayNumber {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-main);
+    margin-bottom: 4px;
+}
+
+.inactiveDay {
+    color: var(--text-light);
+}
+
+/* Events */
+.eventChip {
+    font-size: 10px;
+    padding: 4px 8px;
+    border-radius: 4px;
+    margin-bottom: 4px;
+    display: block;
+}
+
+.eventLabs {
+    background: #E9E3FF;
+    color: var(--primary);
+}
+
+.eventAssign {
+    background: #E6F7FF;
+    color: #0095FF;
+}
+
+.eventExam {
+    background: #FFEAEA;
+    color: #EE5D50;
+}
+
+/* Right Panel */
+.rightPanel {
+    width: 320px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.sectionTitle {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: var(--text-main);
+}

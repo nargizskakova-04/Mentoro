@@ -1,6 +1,6 @@
-## CampusMate AI Backend (FastAPI)
+## mentoro AI Backend (FastAPI)
 
-This directory contains the FastAPI backend service for CampusMate AI. It provides:
+This directory contains the FastAPI backend service for mentoro AI. It provides:
 
 - **Auth** (`/api/auth/*`) with JWT cookies and PostgreSQL via SQLAlchemy (async)
 - **AI Chat** (`/api/ai/chat`) that proxies to a local LM Studio instance
@@ -13,7 +13,7 @@ The Next.js frontend talks only to its own API routes, which in turn proxy reque
 
 ### Running with Docker Compose (recommended)
 
-From the project root (`CampusMateAI`):
+From the project root (`mentoroAI`):
 
 ```bash
 docker compose up --build
@@ -26,7 +26,7 @@ This will start:
 
 The backend container uses the following environment variables (see `docker-compose.yml`):
 
-- `DATABASE_URL=postgresql+asyncpg://campusmate:campusmate123@postgres:5432/campusmate`
+- `DATABASE_URL=postgresql+asyncpg://mentoro:mentoro123@postgres:5432/mentoro`
 - `JWT_SECRET=dev-secret-key`
 - `LM_STUDIO_URL=http://host.docker.internal:1234/v1`
 
@@ -46,14 +46,14 @@ alembic upgrade head
 
 Ensure you have a local PostgreSQL instance running and create a database, for example:
 
-- Database: `campusmate`
-- User: `campusmate`
-- Password: `campusmate123`
+- Database: `mentoro`
+- User: `mentoro`
+- Password: `mentoro123`
 
 Example connection string:
 
 ```text
-postgresql+asyncpg://campusmate:campusmate123@localhost:5432/campusmate
+postgresql+asyncpg://mentoro:mentoro123@localhost:5432/mentoro
 ```
 
 #### 2. Create a virtual environment and install dependencies
@@ -72,7 +72,7 @@ pip install -r requirements.txt
 Create a `.env` file in `backend/` (or export env vars in your shell) with at least:
 
 ```env
-DATABASE_URL=postgresql+asyncpg://campusmate:campusmate123@localhost:5432/campusmate
+DATABASE_URL=postgresql+asyncpg://mentoro:mentoro123@localhost:5432/mentoro
 JWT_SECRET=dev-secret-key
 LM_STUDIO_URL=http://localhost:1234/v1
 FRONTEND_ORIGIN=http://localhost:3000
@@ -109,9 +109,11 @@ The backend will be available at `http://localhost:8000`.
     - Returns: `{ "message": string, "user": { ... } }` (no password field)
   - `POST /api/auth/login`
     - Body: `{ "email": string, "password": string }`
-    - On success: sets `auth_token` HttpOnly cookie and returns `{ "message": "Login successful" }`
+    - On success: sets `auth_token` HttpOnly cookie and returns `{ "message": "Login successful", "token": "<jwt>" }`. Use the cookie in the browser, or use the `token` in the `Authorization: Bearer <token>` header for API clients (e.g. Postman).
   - `GET /api/auth/me`
-    - Reads `auth_token` cookie, returns `{ "user": { ... } }` on success
+    - Auth: `auth_token` cookie **or** header `Authorization: Bearer <token>`. Returns `{ "user": { ... } }` on success.
+  - `PATCH /api/auth/me`
+    - Auth: same as above. Body: `{ "name"?, "major"?, "group"?, "gpa"? }`. Returns updated user.
 
 - **AI Chat**
   - `POST /api/ai/chat`
@@ -135,8 +137,28 @@ The backend will be available at `http://localhost:8000`.
 ### Environment Variables Reference
 
 - **DATABASE_URL**: Async SQLAlchemy URL for PostgreSQL using `asyncpg`, e.g.
-  - `postgresql+asyncpg://campusmate:campusmate123@localhost:5432/campusmate`
+  - `postgresql+asyncpg://mentoro:mentoro123@localhost:5432/mentoro`
 - **JWT_SECRET**: Secret key for signing JWTs.
 - **LM_STUDIO_URL**: Base URL for the LM Studio API (usually `http://localhost:1234/v1` or `http://host.docker.internal:1234/v1` in Docker).
 - **FRONTEND_ORIGIN**: Allowed CORS origin for the Next.js app (default: `http://localhost:3000`).
+
+---
+
+### Testing auth with Postman
+
+1. **Register**  
+   `POST http://localhost:8000/api/auth/register`  
+   Body (raw JSON): `{ "name": "Test User", "email": "test@example.com", "password": "yourpassword" }`
+
+2. **Login**  
+   `POST http://localhost:8000/api/auth/login`  
+   Body (raw JSON): `{ "email": "test@example.com", "password": "yourpassword" }`  
+   In the response you get `"token": "<long-jwt-string>"`. Copy that token.
+
+3. **Call protected endpoints**  
+   For `GET /api/auth/me`, `PATCH /api/auth/me`, or any `/api/assignments` route, add a header:  
+   `Authorization: Bearer <paste-the-token-here>`  
+   (No need to rely on cookies; the backend accepts either the cookie or the Bearer token.)
+
+If login returns **401 Invalid credentials**, double-check the email and password. The user must have been created with `POST /api/auth/register` (so the password is stored as bcrypt hash). Using the same email/password in the login body should work.
 

@@ -1,0 +1,151 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.progress {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.progressText {
+    font-size: 14px;
+    color: #A3AED0;
+    font-weight: 600;
+}
+
+.progressBar {
+    height: 6px;
+    background: #E9EDF7;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.progressFill {
+    height: 100%;
+    background: linear-gradient(90deg, #4318FF, #7C3AED);
+    border-radius: 3px;
+    transition: width 0.3s ease;
+}
+
+.question {
+    font-size: 18px;
+    font-weight: 700;
+    color: #1B2559;
+    line-height: 1.5;
+}
+
+.options {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.option {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 20px;
+    background: #F4F7FE;
+    border: 2px solid transparent;
+    border-radius: 12px;
+    font-size: 15px;
+    color: #1B2559;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.option:hover:not(:disabled) {
+    background: #E9E3FF;
+    border-color: #4318FF;
+}
+
+.option:disabled {
+    cursor: default;
+}
+
+.option.correct {
+    background: rgba(5, 205, 153, 0.1);
+    border-color: #05CD99;
+}
+
+.option.incorrect {
+    background: rgba(238, 93, 80, 0.1);
+    border-color: #EE5D50;
+}
+
+.optionLetter {
+    font-weight: 700;
+    color: #4318FF;
+    min-width: 24px;
+}
+
+.optionText {
+    flex: 1;
+}
+
+.checkIcon {
+    color: #05CD99;
+    flex-shrink: 0;
+}
+
+.crossIcon {
+    color: #EE5D50;
+    flex-shrink: 0;
+}
+
+.explanation {
+    padding: 16px;
+    background: #FAFCFE;
+    border-radius: 12px;
+    border-left: 4px solid #4318FF;
+    font-size: 14px;
+    color: #2B3674;
+    line-height: 1.6;
+}
+
+.explanation strong {
+    color: #1B2559;
+}
+
+.nextBtn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    align-self: flex-start;
+}
+
+.result {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 48px 24px;
+    text-align: center;
+}
+
+.resultIcon {
+    margin-bottom: 16px;
+}
+
+.resultTitle {
+    font-size: 24px;
+    font-weight: 700;
+    color: #1B2559;
+    margin-bottom: 8px;
+}
+
+.resultScore {
+    font-size: 18px;
+    color: #2B3674;
+    margin-bottom: 24px;
+}
+
+.empty {
+    padding: 48px;
+    text-align: center;
+    color: #A3AED0;
+}
