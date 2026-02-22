@@ -12,6 +12,15 @@ from schemas import verify_access_token
 
 router = APIRouter()
 
+def _extract_token(request: Request):
+    token = request.cookies.get("auth_token")
+    if token:
+        return token
+    auth = request.headers.get("Authorization", "")
+    if auth.lower().startswith("bearer "):
+        return auth[7:].strip()
+    return None
+
 
 def calculate_trend(scores: List[int]) -> str:
     if len(scores) < 2:
@@ -56,7 +65,7 @@ def get_study_plan(study_goal: str, weak_topics: List[str], trend_map: Dict[str,
 
 @router.get("/study-plan")
 async def get_recommendations(request: Request, db: AsyncSession = Depends(get_db)):
-    token = request.cookies.get("auth_token")
+    token = _extract_token(request)
     if not token:
         return JSONResponse(
             status_code=401,

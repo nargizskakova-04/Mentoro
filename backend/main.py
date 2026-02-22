@@ -6,11 +6,8 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from database import engine, Base
-from models import User, QuizHistory  
-from routers import auth, chat, quizzes, history
-from routers import recommendations
-from models import Assignment, User  # noqa: F401 — needed for Base.metadata
-from routers import assignments, auth, chat, quizzes
+from models import User, QuizHistory, Assignment  # noqa: F401
+from routers import auth, chat, quizzes, history, recommendations, assignments
 
 load_dotenv()
 

@@ -96,7 +96,7 @@ async def generate_from_document(body: QuizGenerateRequest):
         user_prompt = f"Study the following document and explain what it is about:\n\n{context_text}"
     else:
         system_prompt = (
-            "You are a strict output generator. You must generate a JSON array of 15-20 "
+            "You are a strict output generator. You must generate a JSON array of 10 "
             "multiple choice questions.\n\n"
             "IMPORTANT: Questions must be about the SUBJECT MATTER and LEARNING CONTENT inside "
             "the document - test the student's understanding of the concepts, definitions, "
@@ -112,7 +112,7 @@ async def generate_from_document(body: QuizGenerateRequest):
             '- "explanation": string (brief explanation referring to the document content)\n'
         )
         user_prompt = (
-            "Generate 15-20 multiple choice questions that test understanding of the material "
+            "Generate exactly 10 multiple choice questions that test understanding of the material "
             f"in this document:\n\n{context_text}"
         )
 

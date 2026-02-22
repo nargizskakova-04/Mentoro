@@ -9,6 +9,14 @@ from schemas import QuizHistoryCreate, verify_access_token
 
 router = APIRouter()
 
+def _extract_token(request: Request):
+    token = request.cookies.get("auth_token")
+    if token:
+        return token
+    auth = request.headers.get("Authorization", "")
+    if auth.lower().startswith("bearer "):
+        return auth[7:].strip()
+    return None
 
 @router.post("/quiz")
 async def save_quiz_result(
@@ -16,7 +24,7 @@ async def save_quiz_result(
     request: Request,
     db: AsyncSession = Depends(get_db),
 ):
-    token = request.cookies.get("auth_token")
+    token = _extract_token(request)
     if not token:
         return JSONResponse(status_code=401, content={"message": "Not authenticated"})
 
@@ -57,7 +65,7 @@ async def get_quiz_history(
     request: Request,
     db: AsyncSession = Depends(get_db),
 ):
-    token = request.cookies.get("auth_token")
+    token = _extract_token(request)
     if not token:
         return JSONResponse(status_code=401, content={"message": "Not authenticated"})
 

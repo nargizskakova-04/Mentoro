@@ -60,7 +60,16 @@ export const AIChat = () => {
                     if (done) break;
 
                     const text = decoder.decode(value);
-                    aiMessageContent += text;
+                    const lines = text.split('\n');
+                    for (const line of lines) {
+                        if (line.startsWith('data: ') && line !== 'data: [DONE]') {
+                            try {
+                                const json = JSON.parse(line.slice(6));
+                                const delta = json.choices?.[0]?.delta?.content;
+                                if (delta) aiMessageContent += delta;
+                            } catch {}
+                        }
+                    }
 
                     // Update last message with new content
                     setMessages(prev => {

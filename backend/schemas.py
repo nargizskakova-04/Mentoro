@@ -101,7 +101,6 @@ class QuizGenerateRequest(BaseModel):
 class QuizChatRequest(BaseModel):
     messages: List[ChatMessage]
     documentText: Optional[str] = None
-    documentText: Optional[str] = None
 
 
 # ─── Assignments ─────────────────────────────────────────────────────────────

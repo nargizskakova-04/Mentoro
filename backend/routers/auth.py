@@ -93,7 +93,6 @@ async def register_user(payload: UserCreate, db: AsyncSession = Depends(get_db))
         status_code=201,
         content={
             "message": "User created successfully",
-            "user": user_out.model_dump(mode="json"),
             "user": _user_to_read(user).model_dump(mode="json"),
         },
     )
@@ -146,53 +145,22 @@ async def login_user(payload: UserLogin, db: AsyncSession = Depends(get_db)):
 
 @router.get("/me")
 async def get_me(request: Request, db: AsyncSession = Depends(get_db)):
-    
-    token = request.cookies.get("auth_token")
     token = _extract_token(request)
     if not token:
         return JSONResponse(status_code=401, content={"message": "Not authenticated"})
 
-    
     decoded = verify_access_token(token)
     if not decoded or "userId" not in decoded:
         return JSONResponse(status_code=401, content={"message": "Invalid token"})
 
-    user_id = decoded["userId"]
-
-    
-    user = await db.get(User, user_id)
-    if not user:
-        return JSONResponse(
-            status_code=404,
-            content={"message": "User not found"},
-        )
-
-    
-    user_out = UserRead(
-        id=user.id,
-        name=user.name,
-        email=user.email,
-        major=user.major,
-        group=user.group,
-        gpa=user.gpa,
-        study_goal=user.study_goal,
-        weak_subjects=user.weak_subjects,
-        study_hours_per_week=user.study_hours_per_week,
-        createdAt=user.created_at,
-    )
-
     user = await db.get(User, decoded["userId"])
-
     if not user:
-        return JSONResponse(
-        status_code=404,
-        content={"message": "User not found"}
-    )
+        return JSONResponse(status_code=404, content={"message": "User not found"})
 
     return JSONResponse(
-    status_code=200,
-    content={"user": _user_to_read(user).model_dump(mode="json")},
-)
+        status_code=200,
+        content={"user": _user_to_read(user).model_dump(mode="json")},
+    )
 
 @router.patch("/me")
 async def update_me(
