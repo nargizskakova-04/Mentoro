@@ -488,7 +488,24 @@ const QuizPlayer = ({ questions })=>{
     const [showResult, setShowResult] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(false);
     const [score, setScore] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(0);
     const [isComplete, setIsComplete] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(false);
+    if (!questions || !Array.isArray(questions) || questions.length === 0) {
+        return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+            className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$QuizPlayer$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].empty,
+            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                children: "No questions available. Please check the document or try again."
+            }, void 0, false, {
+                fileName: "[project]/src/components/QuizPlayer.tsx",
+                lineNumber: 29,
+                columnNumber: 17
+            }, ("TURBOPACK compile-time value", void 0))
+        }, void 0, false, {
+            fileName: "[project]/src/components/QuizPlayer.tsx",
+            lineNumber: 28,
+            columnNumber: 13
+        }, ("TURBOPACK compile-time value", void 0));
+    }
     const question = questions[currentIndex];
+    if (!question) return null;
     const isLastQuestion = currentIndex === questions.length - 1;
     const handleSelectOption = (option)=>{
         if (showResult) return;
@@ -521,12 +538,12 @@ const QuizPlayer = ({ questions })=>{
                 children: "No questions available. Please try again."
             }, void 0, false, {
                 fileName: "[project]/src/components/QuizPlayer.tsx",
-                lineNumber: 60,
+                lineNumber: 71,
                 columnNumber: 17
             }, ("TURBOPACK compile-time value", void 0))
         }, void 0, false, {
             fileName: "[project]/src/components/QuizPlayer.tsx",
-            lineNumber: 59,
+            lineNumber: 70,
             columnNumber: 13
         }, ("TURBOPACK compile-time value", void 0));
     }
@@ -542,12 +559,12 @@ const QuizPlayer = ({ questions })=>{
                         color: "#4318FF"
                     }, void 0, false, {
                         fileName: "[project]/src/components/QuizPlayer.tsx",
-                        lineNumber: 70,
+                        lineNumber: 81,
                         columnNumber: 21
                     }, ("TURBOPACK compile-time value", void 0))
                 }, void 0, false, {
                     fileName: "[project]/src/components/QuizPlayer.tsx",
-                    lineNumber: 69,
+                    lineNumber: 80,
                     columnNumber: 17
                 }, ("TURBOPACK compile-time value", void 0)),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -555,7 +572,7 @@ const QuizPlayer = ({ questions })=>{
                     children: "Quiz Complete!"
                 }, void 0, false, {
                     fileName: "[project]/src/components/QuizPlayer.tsx",
-                    lineNumber: 72,
+                    lineNumber: 83,
                     columnNumber: 17
                 }, ("TURBOPACK compile-time value", void 0)),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -571,7 +588,7 @@ const QuizPlayer = ({ questions })=>{
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/components/QuizPlayer.tsx",
-                    lineNumber: 73,
+                    lineNumber: 84,
                     columnNumber: 17
                 }, ("TURBOPACK compile-time value", void 0)),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$Button$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Button"], {
@@ -580,13 +597,13 @@ const QuizPlayer = ({ questions })=>{
                     children: "Try Again"
                 }, void 0, false, {
                     fileName: "[project]/src/components/QuizPlayer.tsx",
-                    lineNumber: 76,
+                    lineNumber: 87,
                     columnNumber: 17
                 }, ("TURBOPACK compile-time value", void 0))
             ]
         }, void 0, true, {
             fileName: "[project]/src/components/QuizPlayer.tsx",
-            lineNumber: 68,
+            lineNumber: 79,
             columnNumber: 13
         }, ("TURBOPACK compile-time value", void 0));
     }
@@ -614,7 +631,7 @@ const QuizPlayer = ({ questions })=>{
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/QuizPlayer.tsx",
-                        lineNumber: 95,
+                        lineNumber: 106,
                         columnNumber: 17
                     }, ("TURBOPACK compile-time value", void 0)),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -626,18 +643,18 @@ const QuizPlayer = ({ questions })=>{
                             }
                         }, void 0, false, {
                             fileName: "[project]/src/components/QuizPlayer.tsx",
-                            lineNumber: 99,
+                            lineNumber: 110,
                             columnNumber: 21
                         }, ("TURBOPACK compile-time value", void 0))
                     }, void 0, false, {
                         fileName: "[project]/src/components/QuizPlayer.tsx",
-                        lineNumber: 98,
+                        lineNumber: 109,
                         columnNumber: 17
                     }, ("TURBOPACK compile-time value", void 0))
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/QuizPlayer.tsx",
-                lineNumber: 94,
+                lineNumber: 105,
                 columnNumber: 13
             }, ("TURBOPACK compile-time value", void 0)),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -645,7 +662,7 @@ const QuizPlayer = ({ questions })=>{
                 children: question.question
             }, void 0, false, {
                 fileName: "[project]/src/components/QuizPlayer.tsx",
-                lineNumber: 106,
+                lineNumber: 117,
                 columnNumber: 13
             }, ("TURBOPACK compile-time value", void 0)),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -663,7 +680,7 @@ const QuizPlayer = ({ questions })=>{
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/QuizPlayer.tsx",
-                                lineNumber: 116,
+                                lineNumber: 127,
                                 columnNumber: 25
                             }, ("TURBOPACK compile-time value", void 0)),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -671,7 +688,7 @@ const QuizPlayer = ({ questions })=>{
                                 children: option
                             }, void 0, false, {
                                 fileName: "[project]/src/components/QuizPlayer.tsx",
-                                lineNumber: 117,
+                                lineNumber: 128,
                                 columnNumber: 25
                             }, ("TURBOPACK compile-time value", void 0)),
                             showResult && option === question.correctAnswer && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$check$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Check$3e$__["Check"], {
@@ -679,7 +696,7 @@ const QuizPlayer = ({ questions })=>{
                                 className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$QuizPlayer$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].checkIcon
                             }, void 0, false, {
                                 fileName: "[project]/src/components/QuizPlayer.tsx",
-                                lineNumber: 119,
+                                lineNumber: 130,
                                 columnNumber: 29
                             }, ("TURBOPACK compile-time value", void 0)),
                             showResult && option === selectedAnswer && option !== question.correctAnswer && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$x$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__X$3e$__["X"], {
@@ -687,18 +704,18 @@ const QuizPlayer = ({ questions })=>{
                                 className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$QuizPlayer$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].crossIcon
                             }, void 0, false, {
                                 fileName: "[project]/src/components/QuizPlayer.tsx",
-                                lineNumber: 122,
+                                lineNumber: 133,
                                 columnNumber: 29
                             }, ("TURBOPACK compile-time value", void 0))
                         ]
                     }, idx, true, {
                         fileName: "[project]/src/components/QuizPlayer.tsx",
-                        lineNumber: 110,
+                        lineNumber: 121,
                         columnNumber: 21
                     }, ("TURBOPACK compile-time value", void 0)))
             }, void 0, false, {
                 fileName: "[project]/src/components/QuizPlayer.tsx",
-                lineNumber: 108,
+                lineNumber: 119,
                 columnNumber: 13
             }, ("TURBOPACK compile-time value", void 0)),
             showResult && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -708,7 +725,7 @@ const QuizPlayer = ({ questions })=>{
                         children: "Explanation:"
                     }, void 0, false, {
                         fileName: "[project]/src/components/QuizPlayer.tsx",
-                        lineNumber: 130,
+                        lineNumber: 141,
                         columnNumber: 21
                     }, ("TURBOPACK compile-time value", void 0)),
                     " ",
@@ -716,7 +733,7 @@ const QuizPlayer = ({ questions })=>{
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/QuizPlayer.tsx",
-                lineNumber: 129,
+                lineNumber: 140,
                 columnNumber: 17
             }, ("TURBOPACK compile-time value", void 0)),
             showResult && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$Button$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Button"], {
@@ -729,19 +746,19 @@ const QuizPlayer = ({ questions })=>{
                         size: 18
                     }, void 0, false, {
                         fileName: "[project]/src/components/QuizPlayer.tsx",
-                        lineNumber: 141,
+                        lineNumber: 152,
                         columnNumber: 21
                     }, ("TURBOPACK compile-time value", void 0))
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/QuizPlayer.tsx",
-                lineNumber: 135,
+                lineNumber: 146,
                 columnNumber: 17
             }, ("TURBOPACK compile-time value", void 0))
         ]
     }, void 0, true, {
         fileName: "[project]/src/components/QuizPlayer.tsx",
-        lineNumber: 93,
+        lineNumber: 104,
         columnNumber: 9
     }, ("TURBOPACK compile-time value", void 0));
 };

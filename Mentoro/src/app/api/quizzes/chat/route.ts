@@ -9,7 +9,7 @@ function truncateForContext(text: string): string {
     return text.slice(0, MAX_CONTEXT_CHARS) + '\n\n[... обрезано ...]';
 }
 
-const genAI = new GoogleGenerativeAI("key");
+const API_KEY = process.env.GOOGLE_AI_API_KEY;
 
 export async function POST(req: NextRequest) {
     try {

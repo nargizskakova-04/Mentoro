@@ -47,6 +47,24 @@ type RouteHandlerConfig<Route extends AppRouteHandlerRoutes = AppRouteHandlerRou
 }
 
 
+// Validate ../../../src/app/api/quizzes/page.tsx
+{
+  type __IsExpected<Specific extends AppPageConfig<"/api/quizzes">> = Specific
+  const handler = {} as typeof import("../../../src/app/api/quizzes/page.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
+// Validate ../../../src/app/api/quizzes/result/page.tsx
+{
+  type __IsExpected<Specific extends AppPageConfig<"/api/quizzes/result">> = Specific
+  const handler = {} as typeof import("../../../src/app/api/quizzes/result/page.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
 // Validate ../../../src/app/dashboard/calendar/page.tsx
 {
   type __IsExpected<Specific extends AppPageConfig<"/dashboard/calendar">> = Specific

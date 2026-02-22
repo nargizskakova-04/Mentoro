@@ -1,8 +1,6 @@
 {
-  "/api/ai/chat/route": "app/api/ai/chat/route.js",
   "/api/quizzes/generate/route": "app/api/quizzes/generate/route.js",
   "/api/quizzes/upload/route": "app/api/quizzes/upload/route.js",
-  "/dashboard/page": "app/dashboard/page.js",
   "/dashboard/quizzes/page": "app/dashboard/quizzes/page.js",
   "/dashboard/quizzes/result/page": "app/dashboard/quizzes/result/page.js"
 }

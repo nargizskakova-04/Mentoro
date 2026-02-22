@@ -54,7 +54,7 @@ async function POST(req) {
     try {
         const { messages } = await req.json();
         const lastMessage = messages[messages.length - 1]?.content;
-        const API_KEY = "AIzaSyBahf8utHGsO8sT7VrtHMGDbvQ8Qwr7Yc4";
+        const API_KEY = process.env.GOOGLE_AI_API_KEY;
         const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent?key=${API_KEY}`;
         const response = await fetch(url, {
             method: 'POST',

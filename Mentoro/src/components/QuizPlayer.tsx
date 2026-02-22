@@ -23,7 +23,18 @@ export const QuizPlayer = ({ questions }: QuizPlayerProps) => {
     const [score, setScore] = useState(0);
     const [isComplete, setIsComplete] = useState(false);
 
+    if (!questions || !Array.isArray(questions) || questions.length === 0) {
+        return (
+            <div className={styles.empty}>
+                <p>No questions available. Please check the document or try again.</p>
+            </div>
+        );
+    }
+
     const question = questions[currentIndex];
+
+    if (!question) return null;
+    
     const isLastQuestion = currentIndex === questions.length - 1;
 
     const handleSelectOption = (option: string) => {
